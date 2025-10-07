@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Patient - United Hospital PRM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+    function toggleReferralFields() {
+        let referred = document.querySelector('select[name="referred"]').value;
+        document.getElementById('referralFields').style.display = referred === "Doctor" ? "block" : "none";
+    }
+    function validateForm() {
+        let name = document.forms["addForm"]["name"].value.trim();
+        let mobile = document.forms["addForm"]["mobile"].value.trim();
+        if (!name || !mobile.match(/^\d{10,}$/)) {
+            alert("Name and valid mobile (min 10 digits) are required.");
+            return false;
+        }
+        let referred = document.forms["addForm"]["referred"].value;
+        if (referred === "Doctor" && !document.forms["addForm"]["drname"].value.trim()) {
+            alert("Doctor name is required for referrals.");
+            return false;
+        }
+        return true;
+    }
+    </script>
+</head>
+<body>
+  <header class="prm-header py-2 mb-2 text-center">
+    <h1 class="prm-title">
+      <span class="prm-united">United</span>
+      <span class="prm-hospital">Hospital</span>
+      <span class="prm-prm">PRM</span>
+    </h1>
+  </header>
+  <div class="container-fluid">
+    <div class="row flex-nowrap">
+      <!-- 3D Sidebar Navigation -->
+      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 prm-sidebar">
+        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
+          <ul class="nav flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+            <li class="nav-item">
+              <a href="{{ url_for('dashboard') }}" class="nav-link prm-nav-tab">
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a href="{{ url_for('add_patient') }}" class="nav-link prm-nav-tab active">
+                Add Patient
+              </a>
+            </li>
+            <li>
+              <a href="{{ url_for('patient_records') }}" class="nav-link prm-nav-tab">
+                Patient Record
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col py-3">
+        <h2 class="mb-4">Add New Patient</h2>
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+        <form name="addForm" action="/add" method="post" onsubmit="return validateForm()" class="row g-3">
+            <div class="col-md-6">
+                <input type="text" name="name" class="form-control" placeholder="Patient Name" required>
+            </div>
+            <div class="col-md-6">
+                <input type="text" name="mobile" class="form-control" placeholder="Mobile No." pattern="\d{10,}" required>
+            </div>
+            <div class="col-md-6">
+                <select name="referred" class="form-select" onchange="toggleReferralFields()" required>
+                    <option value="">Refer Type</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Walk-in">Walk-in</option>
+                </select>
+            </div>
+            <div class="col-md-6" id="referralFields" style="display:none;">
+                <select name="reftype" class="form-select mb-2">
+                    <option value="Internal">Internal</option>
+                    <option value="External">External</option>
+                </select>
+                <input type="text" name="drname" class="form-control" placeholder="Doctor Name">
+            </div>
+            <div class="col-md-4">
+                <select name="status" class="form-select" required>
+                    <option value="New">New</option>
+                    <option value="On-going">On-going</option>
+                    <option value="Cleared">Cleared</option>
+                    <option value="No-show">No-show</option>
+                    <option value="Verified">Verified</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select name="sponsor" class="form-select" required>
+                    <option value="Cash">Cash</option>
+                    <option value="Insurance">Insurance</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <input type="text" name="created_by" class="form-control" placeholder="Created by" required>
+            </div>
+            <div class="col-12">
+                <textarea name="comment" class="form-control" placeholder="Comments"></textarea>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-success">Add Patient</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer class="prm-footer text-center py-2">
+    <span>Waseem Khan Productions</span>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

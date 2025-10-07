@@ -1,0 +1,106 @@
+body {
+    background: #f6fafd;
+}
+.prm-header {
+    background: #fff;
+}
+.prm-title {
+    font-size: 2.2em;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+.prm-united {
+    color: #e53935; /* Red */
+    text-shadow: 2px 2px 6px #ddd;
+    font-weight: 900;
+}
+.prm-hospital {
+    color: #0d1a4a; /* Navy Blue */
+    text-shadow: 2px 2px 6px #ddd;
+    font-weight: 900;
+    margin-left: 0.2em;
+}
+.prm-prm {
+    color: #222; /* Black */
+    font-weight: 700;
+    margin-left: 0.2em;
+}
+/* 3D Footer */
+.prm-footer {
+    background: #f9f9f9;
+    color: #222;
+    font-size: 1em;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-shadow: 2px 2px 8px #bdbdbd, 1px 1px 0 #fff;
+    box-shadow: 0 3px 12px #bdbdbd66, 0 -1px 2px #2221;
+    border-top: 2px solid #ececec;
+}
+.prm-sidebar {
+    background: #fff !important;
+    border-right: 1px solid #eee;
+}
+.prm-nav-tab {
+    display: block;
+    margin: 0.4em 0;
+    padding: 0.7em 1.3em;
+    font-size: 1.08em;
+    font-weight: 600;
+    border-radius: 1.1em;
+    background: linear-gradient(145deg, #e3e3e3 0%, #f9f9f9 100%);
+    box-shadow: 3px 3px 10px #e2e2e2;
+    color: #1e88e5;
+    border: none;
+    transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+}
+.prm-nav-tab:hover, .prm-nav-tab.active {
+    background: linear-gradient(145deg, #e53935 0%, #0d1a4a 100%);
+    color: #fff !important;
+    box-shadow: 6px 6px 14px #bdbdbd;
+}
+.min-vh-100 {
+    min-height: 100vh;
+}
+.prm-tile {
+    background: linear-gradient(145deg, #fafafa 0%, #e3f2fd 100%);
+    box-shadow: 0 8px 24px #bdbdbd60, 0 1.5px 4px #0d1a4a22;
+    border-radius: 1.3em;
+    border: none;
+    margin-bottom: 2em;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.prm-tile:hover {
+    transform: translateY(-5px) scale(1.04);
+    box-shadow: 0 16px 32px #bdbdbd88, 0 3px 8px #0d1a4a38;
+}
+.prm-tile-title {
+    font-weight: 700;
+    font-size: 1.1em;
+    color: #0d1a4a;
+    margin-bottom: 0.3em;
+    letter-spacing: 0.02em;
+}
+.prm-tile-count {
+    font-size: 2.3em;
+    font-weight: 900;
+    color: #e53935;
+    letter-spacing: 0.03em;
+    text-shadow: 0 2px 8px #e5393530;
+}
+.table-primary {
+    background: #e3f2fd;
+}
+.card-title {
+    color: #2980b9;
+}
+.card-text {
+    color: #2ecc71;
+}
+.btn-success {
+    background: linear-gradient(90deg, #38ef7d 0%, #11998e 100%);
+    border: none;
+}
+.btn-primary {
+    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+    border: none;
+}
